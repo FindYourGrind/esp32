@@ -6,11 +6,13 @@
  */
 #include "sdkconfig.h"
 #ifdef CONFIG_U8G2_PRESENT
-#include "U8G2.h"
+#include "ESPU8G2.h"
 #include <u8g2.h>
+
 extern "C" {
-#include <u8g2_esp32_hal.h>
+#include "../../main/u8g2_esp32_hal.h"
 }
+
 U8G2::U8G2(gpio_num_t sda, gpio_num_t scl, int address) {
 	// TODO Auto-generated constructor stub
 	u8g2_esp32_hal_t u8g2_esp32_hal = U8G2_ESP32_HAL_DEFAULT;
