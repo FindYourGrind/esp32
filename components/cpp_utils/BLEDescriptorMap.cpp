@@ -14,7 +14,6 @@
 
 BLEDescriptorMap::BLEDescriptorMap() {}
 BLEDescriptorMap::~BLEDescriptorMap() {}
-
 /**
  * @brief Return the descriptor by UUID.
  * @param [in] UUID The UUID to look up the descriptor.
