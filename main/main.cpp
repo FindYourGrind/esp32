@@ -11,7 +11,7 @@
 #include "Adafruit_SSD1306.h"
 #include "Adafruit_GFX.h"
 #include "sdkconfig.h"
-
+#include <functional>
 
 extern "C" {
 	void app_main(void);
@@ -31,6 +31,9 @@ Adafruit_SSD1306 display = Adafruit_SSD1306(
 	15  // CS
 );
 
+void testFunction (std::function<void(int)> cb) {
+	cb(5);
+}
 
 static void print(char *text) {
 	while(*text != 0) {
@@ -64,6 +67,11 @@ void task_simple_tests_ssd1306(void *ignore) {
 
 void app_main(void) {
 	xTaskCreatePinnedToCore(&task_simple_tests_ssd1306, "task_simple_tests_ssd1306", 8048, NULL, 5, NULL, 0);
+	int b = 0;
+
+	testFunction([&](int a) {
+		b = a;
+	});
 
 	Bluetooth();
 	WiFi();
