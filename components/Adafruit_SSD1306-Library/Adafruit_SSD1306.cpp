@@ -185,7 +185,8 @@ void Adafruit_SSD1306::begin(uint8_t vccstate, uint8_t i2caddr, bool reset) {
 	bus_config.quadwp_io_num = -1; // Not used
 	bus_config.quadhd_io_num = -1; // Not used
 	ESP_LOGI(tag, "... Initializing bus.");
-	ESP_ERROR_CHECK(spi_bus_initialize(HSPI_HOST, &bus_config, 1));
+
+	ESP_ERROR_CHECK(spi_bus_initialize(HSPI_HOST, &bus_config, 0));
 
 	spi_device_interface_config_t dev_config;
 	dev_config.address_bits     = 0;
